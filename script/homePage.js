@@ -4,7 +4,7 @@ const products_detail =[
       name : "Kurta",
       discount_price : 4919 ,
       Original_price : "MRP ₹12299",
-      discount : "60 % off"
+      discount : "50 % off"
     },
     { 
       image : "https://assets.ajio.com/medias/sys_master/root/20250506/0Ygv/681a165955340d4b4f1c8ddc/-473Wx593H-701543268-cream-MODEL.jpg",
@@ -114,15 +114,80 @@ const products_detail =[
       Original_price : "MRP ₹145000",
       discount : "20 % off" 
     }
-]
+    ,
+    {
+      image : "https://m.media-amazon.com/images/I/81UAOPVo0yL._AC_UY1100_.jpg",
+      brand : "Levis",
+      name : "Tshirt",
+      discount_price : 389 ,
+      Original_price : "MRP ₹649",
+      discount : "40 % off" 
+    },
+    { image : "https://m.media-amazon.com/images/I/61SGEwPRxqL._AC_UY1100_.jpg",
+      brand : "Van-Heusen",
+      name : "Women Tshirt",
+      discount_price : 499 ,
+      Original_price : "MRP ₹499",
+      discount : "0 % off"
+    },
+    {
+      image : "https://shop.teamsg.in/cdn/shop/files/Untitled_design_2_157ec40c-e193-4846-8adf-0732d4518864.png?v=1764582630",
+      brand : "SG",
+      name : "Mens Shoes",
+      discount_price : 851 ,
+      Original_price : "MRP ₹1199",
+      discount : "29 % off" 
+    },
+    { image : "https://rukminim3.flixcart.com/image/480/640/xif0q/shoe/t/b/y/8-9244-brown-41-0-roadster-brown-watermarked-original-imahdq7ehtzjy3sp.jpeg?q=90",
+      brand : "Roadster",
+      name : "women shoes",
+      discount_price : 849 ,
+      Original_price : "MRP ₹2299",
+      discount : "63 % off"
+    }
+];
+
+
 
 const sendingData = JSON.stringify(products_detail);
 const dataSending = localStorage.setItem("productDetailList" , sendingData);
 
-const Maindiv = document.getElementById("middle_content"); 
-function populateDataList (){
+
+function creatingelement(arr){
+    const appendingDiv = document.createElement("div");
+    const imageAppendElement  =  document.createElement("img");
+    imageAppendElement.src = arr.image;
+    const brandAppendElement  =  document.createElement("p");
+    brandAppendElement.textContent = arr.brand;
+    const nameAppendElement  =  document.createElement("p");
+    nameAppendElement.textContent = arr.name;
+    const discount_priceAppendElement  =  document.createElement("p");
+    discount_priceAppendElement.textContent = arr.discount_price;
+    const Original_priceElement  =  document.createElement("p");
+    Original_priceElement.textContent = arr.Original_price;
+    const discountAppendElement  =  document.createElement("p");
+    discountAppendElement.textContent = arr.discount;
+
+    appendingDiv.appendChild(imageAppendElement);
+    appendingDiv.appendChild(brandAppendElement);
+    appendingDiv.appendChild(nameAppendElement);
+    appendingDiv.appendChild(discount_priceAppendElement);
+    appendingDiv.appendChild(Original_priceElement);
+    appendingDiv.appendChild(discountAppendElement);
+
+    return appendingDiv;
+}
+
+
+const Maindiv = document.getElementById("middle_content");
+
+function populateDataList() {
     const receiveData = JSON.parse(localStorage.getItem("productDetailList"));
-    for(let i = 0 ; i < receiveData.length ; i++){
-        Maindiv.replaceChild(creatingelement(receiveData[i]))
+
+    for (let i = 0; i < receiveData.length; i++) {
+        Maindiv.appendChild(creatingelement(receiveData[i]));
     }
 }
+
+populateDataList();
+
