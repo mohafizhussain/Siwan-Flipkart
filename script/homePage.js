@@ -1,0 +1,128 @@
+const products_detail =[
+    { image : "https://assets.myntassets.com/w_200,q_50,,dpr_3,fl_progressive,f_webp/assets/images/2026/FEBRUARY/17/mjNF6Ijl_3f30232b1117447b8b7ab5fb48a8007e.jpg",
+      brand : "Vastramay",
+      name : "Kurta",
+      discount_price : 4919 ,
+      Original_price : "MRP ₹12299",
+      discount : "60 % off"
+    },
+    { 
+      image : "https://assets.ajio.com/medias/sys_master/root/20250506/0Ygv/681a165955340d4b4f1c8ddc/-473Wx593H-701543268-cream-MODEL.jpg",
+      brand : "Rare Rabbit",
+      name : "shirt",
+      discount_price : 1567 ,
+      Original_price : "MRP ₹2799",
+      discount : "44 % off" 
+    },
+    { image : "https://freakins.com/cdn/shop/files/E2.2_5ef518fe-5313-4260-9a1b-144467b1b9d9.jpg?v=1782461952",
+      brand : "Jack & Jones",
+      name : "Jeans",
+      discount_price : 1679 ,
+      Original_price : "MRP ₹2799",
+      discount : "40 % off"
+    },
+    {
+      image : "https://m.media-amazon.com/images/I/81UAOPVo0yL._AC_UY1100_.jpg",
+      brand : "Levis",
+      name : "Tshirt",
+      discount_price : 389 ,
+      Original_price : "MRP ₹649",
+      discount : "40 % off" 
+    },
+    { image : "https://m.media-amazon.com/images/I/61SGEwPRxqL._AC_UY1100_.jpg",
+      brand : "Van-Heusen",
+      name : "Women Tshirt",
+      discount_price : 499 ,
+      Original_price : "MRP ₹499",
+      discount : "0 % off"
+    },
+    {
+      image : "https://shop.teamsg.in/cdn/shop/files/Untitled_design_2_157ec40c-e193-4846-8adf-0732d4518864.png?v=1764582630",
+      brand : "SG",
+      name : "Mens Shoes",
+      discount_price : 851 ,
+      Original_price : "MRP ₹1199",
+      discount : "29 % off" 
+    },
+    { image : "https://rukminim3.flixcart.com/image/480/640/xif0q/shoe/t/b/y/8-9244-brown-41-0-roadster-brown-watermarked-original-imahdq7ehtzjy3sp.jpeg?q=90",
+      brand : "Roadster",
+      name : "women shoes",
+      discount_price : 849 ,
+      Original_price : "MRP ₹2299",
+      discount : "63 % off"
+    },
+    {
+      image : "https://assets.ajio.com/medias/sys_master/root/20230922/TRPP/650d7c9fddf7791519f41249/-1117Wx1400H-469496448-grey-MODEL.jpg",
+      brand : "ADIDAS",
+      name : "Mens Slipper",
+      discount_price : 389 ,
+      Original_price : "MRP ₹649",
+      discount : "40 % off" 
+    },
+    { image : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuGH7KJV4Idh4HSnY-6Kfkzb0QuSqxgzMuuAHpkMotS_CY0QacttK5PPRw&s=10",
+      brand : "Flite",
+      name : "Women Slipper",
+      discount_price : 586 ,
+      Original_price : "MRP ₹2399",
+      discount : "76 % off"
+    },
+    {
+      image : "https://rukmini1.flixcart.com/image/1500/1500/xif0q/mobile/6/n/d/iphone-13-mlpg3hn-a-apple-resized-original-imag6vpyghayhhrh.jpeg?q=70",
+      brand : "Apple",
+      name : "Iphone 13",
+      discount_price : 45000 ,
+      Original_price : "MRP ₹49999",
+      discount : "10 % off" 
+    },
+    {
+      image : "https://rukmini1.flixcart.com/image/1500/1500/xif0q/mobile/3/5/l/-original-imaghx9qmgqsk9s4.jpeg?q=70",
+      brand : "Apple",
+      name : "Iphone 14",
+      discount_price : 50000 ,
+      Original_price : "MRP ₹100000",
+      discount : "50 % off" 
+    },
+    {
+      image : "https://media-ik.croma.com/Croma%20Assets/Communication/Mobiles/Images/300749_0_hyore5.png",
+      brand : "Apple",
+      name : "Iphone 15 pro",
+      discount_price : 134000 ,
+      Original_price : "MRP ₹169000",
+      discount : "22 % off" 
+    },
+    {
+      image : "https://media-ik.croma.com/Croma%20Assets/Communication/Mobiles/Images/321194_0_JUnDsuBew.png?updatedAt=1770992567618",
+      brand : "Vivo",
+      name : "vivo",
+      discount_price : 66000 ,
+      Original_price : "MRP ₹100000",
+      discount : "34 % off" 
+    },
+    {
+      image : "https://assets.myntassets.com/w_412,q_50,,dpr_3,fl_progressive,f_webp/assets/images/251026/2022/7/18/ef58f3b6-ecdb-481b-b5c8-0de7f8361bf81658123343401-Casio-Youth-Digital-Men-Silver-Digital-watch-D099-AE-1200WHD-11.jpg",
+      brand : "Casio",
+      name : "Watch Casio",
+      discount_price : 3900 ,
+      Original_price : "MRP ₹5000",
+      discount : "21 % off" 
+    },
+    {
+      image : "https://m.media-amazon.com/images/I/71HReMsMPrL._AC_UF1000,1000_QL80_.jpg",
+      brand : "Sumsung",
+      name : "Sumsung S25",
+      discount_price : 114000,
+      Original_price : "MRP ₹145000",
+      discount : "20 % off" 
+    }
+]
+
+const sendingData = JSON.stringify(products_detail);
+const dataSending = localStorage.setItem("productDetailList" , sendingData);
+
+const Maindiv = document.getElementById("middle_content"); 
+function populateDataList (){
+    const receiveData = JSON.parse(localStorage.getItem("productDetailList"));
+    for(let i = 0 ; i < receiveData.length ; i++){
+        Maindiv.replaceChild(creatingelement(receiveData[i]))
+    }
+}
