@@ -156,23 +156,6 @@ const products_detail = [
 const sendingData = JSON.stringify(products_detail);
 const dataSending = localStorage.setItem("productDetailList" , sendingData);
 
-// function gettingData (addtocartDetail){
-//     const gettingDataFromLocal = JSON.parse(localStorage.getItem("addtocartProduct"));
-//     let saveallData = []
-
-//     if(!gettingDataFromLocal){
-//         JSON.stringify(localStorage.setItem("addtocartProduct" , addtocartDetail));
-
-//     }else{
-//         for(let i = 0 ; i < gettingDataFromLocal.length ; i++){
-//             saveallData.push(gettingDataFromLocal[i])
-//         }
-//     }
-
-//     const saveallDataSend = JSON.stringify(saveallData);
-//     localStorage.setItem("addtocartProduct" , saveallDataSend);
-// }
-
 function gettingData(addtocartDetail) {
 
     const gettingDataFromLocal = JSON.parse(
