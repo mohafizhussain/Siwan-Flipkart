@@ -1,3 +1,4 @@
+// we can add more product details
 const products_detail =[
     { image : "https://assets.myntassets.com/w_200,q_50,,dpr_3,fl_progressive,f_webp/assets/images/2026/FEBRUARY/17/mjNF6Ijl_3f30232b1117447b8b7ab5fb48a8007e.jpg",
       brand : "Vastramay",
@@ -167,6 +168,8 @@ function creatingelement(arr){
     Original_priceElement.textContent = arr.Original_price;
     const discountAppendElement  =  document.createElement("p");
     discountAppendElement.textContent = arr.discount;
+    const buttonAppendElement  =  document.createElement("button");
+    buttonAppendElement.textContent = "Add to Cart";
 
     appendingDiv.appendChild(imageAppendElement);
     appendingDiv.appendChild(brandAppendElement);
@@ -174,6 +177,7 @@ function creatingelement(arr){
     appendingDiv.appendChild(discount_priceAppendElement);
     appendingDiv.appendChild(Original_priceElement);
     appendingDiv.appendChild(discountAppendElement);
+    appendingDiv.appendChild(buttonAppendElement);
 
     return appendingDiv;
 }
