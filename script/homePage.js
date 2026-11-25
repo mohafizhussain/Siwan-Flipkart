@@ -198,6 +198,21 @@ function creatingelement(arr){
         gettingData(arr);
 
     };
+    // style
+    buttonAppendElement.textContent = "Add to Cart";
+
+    buttonAppendElement.style.backgroundColor = "orange";
+    buttonAppendElement.style.color = "black";
+    buttonAppendElement.style.padding = "10px 20px";
+    buttonAppendElement.style.border = "1px solid blue";
+    buttonAppendElement.style.borderRadius = "5px";
+    buttonAppendElement.style.cursor = "pointer";
+    buttonAppendElement.style.fontSize = "16px";
+    buttonAppendElement.style.fontWeight = "bold";
+
+     buttonAppendElement.onclick = function () {
+    gettingData(arr);
+};
 
     appendingDiv.appendChild(imageAppendElement);
     appendingDiv.appendChild(brandAppendElement);
