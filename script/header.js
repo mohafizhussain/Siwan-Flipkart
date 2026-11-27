@@ -88,4 +88,4 @@ function searchProduct() {
 
 
 
-
+displayProducts(products);
