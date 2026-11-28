@@ -218,12 +218,23 @@ function creatingelement(arr){
     appendingDiv.className = "product-card";
     const imageAppendElement  =  document.createElement("img");
     imageAppendElement.src = arr.image;
+
+    // styling image
+    imageAppendElement.style.borderRadius = "50px";
+
     const DataOfProductDiv = document.createElement("div");
     DataOfProductDiv.className = "product-details";
     const brandAppendElement  =  document.createElement("p");
     brandAppendElement.textContent = arr.brand;
+    // brand styling
+    brandAppendElement.style.color = "red";
+    brandAppendElement.style.fontWeight = "bold";
     const nameAppendElement  =  document.createElement("p");
     nameAppendElement.textContent = arr.name;
+    //Name styling
+    nameAppendElement.style.color = "black";
+    nameAppendElement.style.fontWeight = "bold";
+
     const discount_priceAppendElement  =  document.createElement("p");
     discount_priceAppendElement.textContent = arr.discount_price;
     const Original_priceElement  =  document.createElement("p");
@@ -246,6 +257,8 @@ function creatingelement(arr){
         gettingDataOfWhisList(arr);
 
     };
+    // style
+    buttonAppendElement.textContent = "Add to Cart";
     whislistButton.className = "wishlist-button";
     const shareButton = document.createElement("button");
 
@@ -264,6 +277,19 @@ function creatingelement(arr){
     shareButton.className = "share-button";
 
 
+    buttonAppendElement.style.backgroundColor = "orange";
+    buttonAppendElement.style.color = "black";
+    buttonAppendElement.style.padding = "10px 20px";
+    buttonAppendElement.style.border = "1px solid blue";
+    buttonAppendElement.style.borderRadius = "5px";
+    buttonAppendElement.style.cursor = "pointer";
+    buttonAppendElement.style.fontSize = "16px";
+    buttonAppendElement.style.fontWeight = "bold";
+
+     buttonAppendElement.onclick = function () {
+    gettingData(arr);
+};
+  
     appendingDiv.appendChild(imageAppendElement);
     DataOfProductDiv.appendChild(brandAppendElement);
     DataOfProductDiv.appendChild(nameAppendElement);
