@@ -175,14 +175,23 @@ function gettingDataOfWhisList(whisListCart) {
     );
     let saveallData = [];
     if (!gettingDataFromLocal) {
-
         saveallData.push(whisListCart);
     } else {
 
+        let productExist = false;
+
         for (let i = 0; i < gettingDataFromLocal.length; i++) {
+
             saveallData.push(gettingDataFromLocal[i]);
+
+            if (gettingDataFromLocal[i].id === whisListCart.id) {
+                productExist = true;
+            }
         }
-        saveallData.push(whisListCart);
+
+        if (!productExist) {
+            saveallData.push(whisListCart);
+        }
     }
     const saveallDataSend = JSON.stringify(saveallData);
 
@@ -191,7 +200,7 @@ function gettingDataOfWhisList(whisListCart) {
 
 
 
-// add to cart
+// add to cart button section
 function gettingDataOfAddtoCart(addtocartDetail) {
 
     const gettingDataFromLocal = JSON.parse(
@@ -213,10 +222,12 @@ function gettingDataOfAddtoCart(addtocartDetail) {
     localStorage.setItem("addtocartProduct", saveallDataSend);
 }
 
-function creatingelement(arr){
+function creatingelement(arr) {
+
     const appendingDiv = document.createElement("div");
     appendingDiv.className = "product-card";
-    const imageAppendElement  =  document.createElement("img");
+
+    const imageAppendElement = document.createElement("img");
     imageAppendElement.src = arr.image;
 
     // styling image
@@ -224,59 +235,88 @@ function creatingelement(arr){
 
     const DataOfProductDiv = document.createElement("div");
     DataOfProductDiv.className = "product-details";
-    const brandAppendElement  =  document.createElement("p");
+
+    const brandAppendElement = document.createElement("p");
     brandAppendElement.textContent = arr.brand;
+
     // brand styling
     brandAppendElement.style.color = "red";
     brandAppendElement.style.fontWeight = "bold";
-    const nameAppendElement  =  document.createElement("p");
+
+    const nameAppendElement = document.createElement("p");
     nameAppendElement.textContent = arr.name;
-    //Name styling
+
+    // Name styling
     nameAppendElement.style.color = "black";
     nameAppendElement.style.fontWeight = "bold";
 
-    const discount_priceAppendElement  =  document.createElement("p");
+    const discount_priceAppendElement = document.createElement("p");
     discount_priceAppendElement.textContent = arr.discount_price;
-    const Original_priceElement  =  document.createElement("p");
-    Original_priceElement.textContent = arr.Original_price;
-    const discountAppendElement  =  document.createElement("p");
+
+    const Original_priceElement = document.createElement("p");
+    Original_priceElement.textContent = arr.original_price;
+
+    const discountAppendElement = document.createElement("p");
     discountAppendElement.textContent = arr.discount;
 
-    const buttonAppendElement  =  document.createElement("button");
+    // Add to Cart Button
+    const buttonAppendElement = document.createElement("button");
+
     buttonAppendElement.textContent = "Add to Cart";
-     buttonAppendElement.onclick = function(){
+
+    // checking product in cart
+    const addtocartDetailLocal = JSON.parse(
+        localStorage.getItem("addtocartProduct")
+    ) || [];
+
+    for (let i = 0; i < addtocartDetailLocal.length; i++) {
+
+        if (addtocartDetailLocal[i].id === arr.id) {
+
+            buttonAppendElement.textContent = "Item in Cart";
+            break;
+        }
+    }
+
+    buttonAppendElement.onclick = function () {
+
         gettingDataOfAddtoCart(arr);
 
+        buttonAppendElement.textContent = "Item in Cart";
     };
-    const buttonBuyAppendElement  =  document.createElement("button");
+
+    // Buy Now Button
+    const buttonBuyAppendElement = document.createElement("button");
     buttonBuyAppendElement.textContent = "Buy now";
 
+    // Wishlist Button
     const whislistButton = document.createElement("button");
-    whislistButton.textContent = "♡";;
-    whislistButton.onclick = function(){
-        gettingDataOfWhisList(arr);
+    whislistButton.textContent = "♡";
 
+    whislistButton.onclick = function () {
+        gettingDataOfWhisList(arr);
     };
-    // style
-    buttonAppendElement.textContent = "Add to Cart";
+
     whislistButton.className = "wishlist-button";
+
+    // Share Button
     const shareButton = document.createElement("button");
 
     shareButton.innerHTML = `
-    <svg width="20" height="20" viewBox="0 0 24 24"
-    fill="none" stroke="currentColor" stroke-width="2"
-    stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="18" cy="5" r="3"/>
-    <circle cx="6" cy="12" r="3"/>
-    <circle cx="18" cy="19" r="3"/>
-    <path d="M8.7 10.5L15.3 6.5"/>
-    <path d="M8.7 13.5L15.3 17.5"/>
-    </svg>
+        <svg width="20" height="20" viewBox="0 0 24 24"
+        fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="18" cy="5" r="3"/>
+        <circle cx="6" cy="12" r="3"/>
+        <circle cx="18" cy="19" r="3"/>
+        <path d="M8.7 10.5L15.3 6.5"/>
+        <path d="M8.7 13.5L15.3 17.5"/>
+        </svg>
     `;
 
     shareButton.className = "share-button";
 
-
+    // Add to Cart Button Styling
     buttonAppendElement.style.backgroundColor = "orange";
     buttonAppendElement.style.color = "black";
     buttonAppendElement.style.padding = "10px 20px";
@@ -286,25 +326,23 @@ function creatingelement(arr){
     buttonAppendElement.style.fontSize = "16px";
     buttonAppendElement.style.fontWeight = "bold";
 
-     buttonAppendElement.onclick = function () {
-    gettingData(arr);
-};
-  
+    // Appending elements
     appendingDiv.appendChild(imageAppendElement);
+
     DataOfProductDiv.appendChild(brandAppendElement);
     DataOfProductDiv.appendChild(nameAppendElement);
     DataOfProductDiv.appendChild(discount_priceAppendElement);
     DataOfProductDiv.appendChild(Original_priceElement);
     DataOfProductDiv.appendChild(discountAppendElement);
     DataOfProductDiv.appendChild(buttonAppendElement);
-    DataOfProductDiv.appendChild(buttonBuyAppendElement)
+    DataOfProductDiv.appendChild(buttonBuyAppendElement);
+
     appendingDiv.appendChild(DataOfProductDiv);
     appendingDiv.appendChild(whislistButton);
-    appendingDiv.appendChild(shareButton)
+    appendingDiv.appendChild(shareButton);
 
     return appendingDiv;
 }
-
 
 const Maindiv = document.getElementById("middle_content");
 
