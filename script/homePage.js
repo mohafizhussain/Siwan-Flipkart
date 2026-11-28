@@ -167,7 +167,7 @@ const sendingData = JSON.stringify(products_detail);
 const dataSending = localStorage.setItem("productDetailList" , sendingData);
 
 
-// for whisting
+// for whislist
 function gettingDataOfWhisList(whisListCart) {
 
     const gettingDataFromLocal = JSON.parse(
