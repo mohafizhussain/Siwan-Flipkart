@@ -8,3 +8,30 @@
     height: 280px;
     object-fit: contain;
 }
+.product-card {
+    position: relative;
+}
+
+.product-card img {
+    width: 100%;
+    display: block;
+}
+
+.wishlist-button {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgb(143, 140, 140);
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    font-size: 25px;
+    cursor: pointer;
+    color: white;
+}
+
+.product-card:hover .wishlist-button {
+    display: block;
+}

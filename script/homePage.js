@@ -179,8 +179,11 @@ function gettingData(addtocartDetail) {
 
 function creatingelement(arr){
     const appendingDiv = document.createElement("div");
+    appendingDiv.className = "product-card";
     const imageAppendElement  =  document.createElement("img");
     imageAppendElement.src = arr.image;
+    const DataOfProductDiv = document.createElement("div");
+    DataOfProductDiv.className = "product-details";
     const brandAppendElement  =  document.createElement("p");
     brandAppendElement.textContent = arr.brand;
     const nameAppendElement  =  document.createElement("p");
@@ -194,18 +197,27 @@ function creatingelement(arr){
 
     const buttonAppendElement  =  document.createElement("button");
     buttonAppendElement.textContent = "Add to Cart";
-    buttonAppendElement.onclick = function(){
+     buttonAppendElement.onclick = function(){
         gettingData(arr);
 
     };
+    const buttonBuyAppendElement  =  document.createElement("button");
+    buttonBuyAppendElement.textContent = "Buy now";
+
+    const whislistButton = document.createElement("button");
+    whislistButton.textContent = "♡";;
+    whislistButton.className = "wishlist-button";
 
     appendingDiv.appendChild(imageAppendElement);
-    appendingDiv.appendChild(brandAppendElement);
-    appendingDiv.appendChild(nameAppendElement);
-    appendingDiv.appendChild(discount_priceAppendElement);
-    appendingDiv.appendChild(Original_priceElement);
-    appendingDiv.appendChild(discountAppendElement);
-    appendingDiv.appendChild(buttonAppendElement);
+    DataOfProductDiv.appendChild(brandAppendElement);
+    DataOfProductDiv.appendChild(nameAppendElement);
+    DataOfProductDiv.appendChild(discount_priceAppendElement);
+    DataOfProductDiv.appendChild(Original_priceElement);
+    DataOfProductDiv.appendChild(discountAppendElement);
+    DataOfProductDiv.appendChild(buttonAppendElement);
+    DataOfProductDiv.appendChild(buttonBuyAppendElement)
+    appendingDiv.appendChild(DataOfProductDiv);
+    appendingDiv.appendChild(whislistButton);
 
     return appendingDiv;
 }
