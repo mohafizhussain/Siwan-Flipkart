@@ -181,10 +181,21 @@ function creatingelement(arr){
     const appendingDiv = document.createElement("div");
     const imageAppendElement  =  document.createElement("img");
     imageAppendElement.src = arr.image;
+
+    // styling image
+    imageAppendElement.style.borderRadius = "50px";
+
     const brandAppendElement  =  document.createElement("p");
     brandAppendElement.textContent = arr.brand;
+    // brand styling
+    brandAppendElement.style.color = "red";
+    brandAppendElement.style.fontWeight = "bold";
     const nameAppendElement  =  document.createElement("p");
     nameAppendElement.textContent = arr.name;
+    //Name styling
+    nameAppendElement.style.color = "black";
+    nameAppendElement.style.fontWeight = "bold";
+
     const discount_priceAppendElement  =  document.createElement("p");
     discount_priceAppendElement.textContent = arr.discount_price;
     const Original_priceElement  =  document.createElement("p");
@@ -213,7 +224,7 @@ function creatingelement(arr){
      buttonAppendElement.onclick = function () {
     gettingData(arr);
 };
-
+  
     appendingDiv.appendChild(imageAppendElement);
     appendingDiv.appendChild(brandAppendElement);
     appendingDiv.appendChild(nameAppendElement);
