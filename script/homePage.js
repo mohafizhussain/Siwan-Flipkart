@@ -150,13 +150,49 @@ const products_detail = [
         original_price: 5000,
         discount: "22% off",
         category: "Watches"
+    },
+    {
+        id: 4,
+        image: "https://m.media-amazon.com/images/I/81UAOPVo0yL._AC_UY1100_.jpg",
+        brand: "Levis",
+        name: "Tshirt",
+        discount_price: 389,
+        original_price: 649,
+        discount: "40% off",
+        category: "Clothing"
     }
 ];
 
 const sendingData = JSON.stringify(products_detail);
 const dataSending = localStorage.setItem("productDetailList" , sendingData);
 
-function gettingData(addtocartDetail) {
+
+// for whisting
+function gettingDataOfWhisList(whisListCart) {
+
+    const gettingDataFromLocal = JSON.parse(
+        localStorage.getItem("whisList")
+    );
+    let saveallData = [];
+    if (!gettingDataFromLocal) {
+
+        saveallData.push(whisListCart);
+    } else {
+
+        for (let i = 0; i < gettingDataFromLocal.length; i++) {
+            saveallData.push(gettingDataFromLocal[i]);
+        }
+        saveallData.push(whisListCart);
+    }
+    const saveallDataSend = JSON.stringify(saveallData);
+
+    localStorage.setItem("whisList", saveallDataSend);
+}
+
+
+
+// add to cart
+function gettingDataOfAddtoCart(addtocartDetail) {
 
     const gettingDataFromLocal = JSON.parse(
         localStorage.getItem("addtocartProduct")
@@ -179,8 +215,11 @@ function gettingData(addtocartDetail) {
 
 function creatingelement(arr){
     const appendingDiv = document.createElement("div");
+    appendingDiv.className = "product-card";
     const imageAppendElement  =  document.createElement("img");
     imageAppendElement.src = arr.image;
+    const DataOfProductDiv = document.createElement("div");
+    DataOfProductDiv.className = "product-details";
     const brandAppendElement  =  document.createElement("p");
     brandAppendElement.textContent = arr.brand;
     const nameAppendElement  =  document.createElement("p");
@@ -194,18 +233,48 @@ function creatingelement(arr){
 
     const buttonAppendElement  =  document.createElement("button");
     buttonAppendElement.textContent = "Add to Cart";
-    buttonAppendElement.onclick = function(){
-        gettingData(arr);
+     buttonAppendElement.onclick = function(){
+        gettingDataOfAddtoCart(arr);
 
     };
+    const buttonBuyAppendElement  =  document.createElement("button");
+    buttonBuyAppendElement.textContent = "Buy now";
+
+    const whislistButton = document.createElement("button");
+    whislistButton.textContent = "♡";;
+    whislistButton.onclick = function(){
+        gettingDataOfWhisList(arr);
+
+    };
+    whislistButton.className = "wishlist-button";
+    const shareButton = document.createElement("button");
+
+    shareButton.innerHTML = `
+    <svg width="20" height="20" viewBox="0 0 24 24"
+    fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="18" cy="5" r="3"/>
+    <circle cx="6" cy="12" r="3"/>
+    <circle cx="18" cy="19" r="3"/>
+    <path d="M8.7 10.5L15.3 6.5"/>
+    <path d="M8.7 13.5L15.3 17.5"/>
+    </svg>
+    `;
+
+    shareButton.className = "share-button";
+
 
     appendingDiv.appendChild(imageAppendElement);
-    appendingDiv.appendChild(brandAppendElement);
-    appendingDiv.appendChild(nameAppendElement);
-    appendingDiv.appendChild(discount_priceAppendElement);
-    appendingDiv.appendChild(Original_priceElement);
-    appendingDiv.appendChild(discountAppendElement);
-    appendingDiv.appendChild(buttonAppendElement);
+    DataOfProductDiv.appendChild(brandAppendElement);
+    DataOfProductDiv.appendChild(nameAppendElement);
+    DataOfProductDiv.appendChild(discount_priceAppendElement);
+    DataOfProductDiv.appendChild(Original_priceElement);
+    DataOfProductDiv.appendChild(discountAppendElement);
+    DataOfProductDiv.appendChild(buttonAppendElement);
+    DataOfProductDiv.appendChild(buttonBuyAppendElement)
+    appendingDiv.appendChild(DataOfProductDiv);
+    appendingDiv.appendChild(whislistButton);
+    appendingDiv.appendChild(shareButton)
 
     return appendingDiv;
 }
